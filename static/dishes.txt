@@ -1,0 +1,11 @@
+# Put one dish per line. Save this file, then refresh the website.
+Masala dosa
+Paneer butter masala
+Veg pulao
+Chole bhature
+Rajma chawal
+Lemon rice
+Aloo paratha
+Veg biryani
+Idli sambar
+Curd rice

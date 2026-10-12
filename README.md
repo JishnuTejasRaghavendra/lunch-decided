@@ -12,7 +12,7 @@ Create a Cloudflare Pages project connected to this repository and use these set
 - **Build output directory:** `dist`
 - **Root directory:** leave blank (repository root)
 
-The build copies the website files from `static/` and the menu from `data/dishes.txt` into `dist/`. Cloudflare Pages serves that output as a static website; it does not need to run `server.py`.
+The build copies the menu from `data/dishes.txt` into `static/dishes.txt` and then copies the complete site into `dist/`. This makes the menu available whether Pages is configured to publish `static` directly or the recommended `dist` build output. Cloudflare Pages serves the output as a static website; it does not need to run `server.py`.
 
 Every push to the connected production branch will trigger a new deployment.
 
@@ -31,13 +31,14 @@ Keep the terminal open while using the local site. Press Ctrl+C to stop the serv
 Edit `data/dishes.txt`, putting one dish on each line. Blank lines and lines beginning with `#` are ignored.
 
 - **Local:** save the file and refresh the page.
-- **Cloudflare Pages:** commit and push the changed file to GitHub; Pages rebuilds and deploys the updated menu.
+- **Cloudflare Pages:** commit and push the changed file to GitHub; the build copies it into the published website automatically. If your Pages project publishes `static` directly, keep `static/dishes.txt` updated too or switch to the recommended `dist` output with `node build.mjs`.
 
 ## Project structure
 
 - `static/index.html` — page structure
 - `static/styles.css` — styling and animations
 - `static/app.js` — picker logic and browser history
+- `static/dishes.txt` — deployed copy of the menu, so the site can read it as a static file
 - `data/dishes.txt` — editable dish list
 - `server.py` — lightweight local development server
 - `build.mjs` — creates the static Cloudflare Pages output
