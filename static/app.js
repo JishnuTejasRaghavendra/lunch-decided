@@ -30,22 +30,23 @@ function normalise(value) {
 async function loadDishes() {
   const list = $("menu-list");
   try {
-    const response = await fetch("/dishes", { cache: "no-store" });
-    if (!response.ok) throw new Error("Could not load data/dishes.txt");
-    const data = await response.json();
-    dishes = [...new Set((data.dishes || []).map((name) => String(name).trim()).filter(Boolean))];
+    // This relative static-file URL works on Cloudflare Pages and locally.
+    const response = await fetch("dishes.txt", { cache: "no-store" });
+    if (!response.ok) throw new Error("Could not load dishes.txt (HTTP " + response.status + ")");
+    const text = await response.text();
+    dishes = [...new Set(text.split(/\r?\n/).map((line) => line.trim()).filter((line) => line && !line.startsWith("#")))];
     renderMenu();
     if (!dishes.length) {
-      list.innerHTML = '<li class="empty-state">Your dish list is empty. Add dishes to data/dishes.txt.</li>';
+      list.innerHTML = '<li class="empty-state">Your dish list is empty. Add dishes to data/dishes.txt, then rebuild or refresh.</li>';
       $("dish-name").textContent = "Add your dishes first";
-      $("dish-note").textContent = "Add one dish per line in data/dishes.txt, then refresh.";
+      $("dish-note").textContent = "Add one dish per line in data/dishes.txt, then rebuild or refresh.";
       $("pick-button").disabled = true;
       $("pick-button").style.opacity = ".55";
     }
   } catch (error) {
-    list.innerHTML = '<li class="empty-state">Menu could not load. Start the site with <code>python server.py</code> from the project folder.</li>';
+    list.innerHTML = '<li class="empty-state">Menu could not load. Check that dishes.txt is included in the deployed site.</li>';
     $("dish-name").textContent = "Almost ready.";
-    $("dish-note").textContent = "Open the website through the local server so it can read your dish file.";
+    $("dish-note").textContent = "The menu file could not be loaded.";
     $("error-message").hidden = false;
     $("error-message").textContent = error.message;
   }
