@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <title>Lunch, Decided.</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="wordmark" href="#top" aria-label="Lunch, Decided home"><span class="mark">L.</span> lunch, decided<span class="period">.</span></a>
+      <span class="day-chip"><span class="status-dot"></span> YOUR DAILY LUNCH PICKER</span>
+    </header>
+
+    <section class="intro" id="top">
+      <p class="eyebrow">ONE LESS DECISION TODAY</p>
+      <h1>Lunch is<br><span>handled.</span></h1>
+      <p class="lede">No more standing there wondering what to eat. Let chance choose today's dish — with a little memory to keep things interesting.</p>
+    </section>
+
+    <section class="picker-card" aria-labelledby="pick-heading">
+      <div class="card-top"><span class="tiny-label" id="pick-heading">TODAY'S PICK</span><span class="shuffle-icon" aria-hidden="true">↗</span></div>
+      <div class="dish-stage" aria-live="polite" aria-atomic="true">
+        <div class="dish-illustration" aria-hidden="true"><span class="plate"><span class="plate-inner"><span class="food food-one"></span><span class="food food-two"></span><span class="food food-three"></span><span class="leaf">✳</span></span></span></div>
+        <p class="dish-kicker" id="dish-kicker">YOUR NEXT MEAL</p>
+        <h2 id="dish-name">Ready when you are.</h2>
+        <p class="dish-note" id="dish-note">A good lunch, without the overthinking.</p>
+      </div>
+      <button class="pick-button" id="pick-button" type="button"><span>Pick my lunch</span><span class="button-arrow">↗</span></button>
+      <p class="microcopy"><span>✦</span> Recently eaten dishes get a lower chance, not a lifetime ban.</p>
+      <p class="error-message" id="error-message" role="status" hidden></p>
+    </section>
+
+    <section class="below-grid">
+      <article class="history-panel panel">
+        <div class="section-heading"><div><p class="eyebrow">YOUR FOOD FOOTPRINT</p><h3>Recently picked</h3></div><span class="count-pill" id="history-count">0 dishes</span></div>
+        <p class="panel-copy">Your browser remembers these on this device, so your picks can have a little variety.</p>
+        <ul class="history-list" id="history-list"><li class="empty-state">Your lunch history will show up here.</li></ul>
+        <button class="text-button" id="clear-history" type="button">Clear lunch history <span>↗</span></button>
+      </article>
+      <article class="list-panel panel">
+        <div class="section-heading"><div><p class="eyebrow">THE MENU</p><h3>In the running</h3></div><span class="count-pill" id="menu-count">— dishes</span></div>
+        <p class="panel-copy">Edit <code>data/dishes.txt</code> to change the menu. One dish per line, then refresh.</p>
+        <ul class="menu-list" id="menu-list"><li class="empty-state">Loading your menu…</li></ul>
+        <p class="menu-footnote"><span class="status-dot"></span> Menu is read from your dish list file.</p>
+      </article>
+    </section>
+    <footer><span>MADE FOR THE DAILY “WHAT SHOULD I EAT?”</span><span>Small decision. Sorted.</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
