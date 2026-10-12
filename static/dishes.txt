@@ -1,11 +1,12 @@
 # Put one dish per line. Save this file, then refresh the website.
-Masala dosa
-Paneer butter masala
-Veg pulao
-Chole bhature
-Rajma chawal
-Lemon rice
-Aloo paratha
-Veg biryani
-Idli sambar
-Curd rice
+Masala Dosa
+Set Dosa
+Roti Curry
+Chole Bhature
+Rice Bath
+Bisi Bele Bath
+Aloo Paratha
+North Meals
+South Meals
+Veg Fried Rice
+Veg Noodles
